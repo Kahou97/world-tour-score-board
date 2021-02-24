@@ -1,5 +1,5 @@
 import { createReducer } from '../utilsReducer';
-import {INIT_HOME} from '../../actions/home';
+import {INIT_HOME,GAMES_UPDATED, INIT_HOME_COMPLETED} from '../../actions/home';
 
 const initialState = {
   data: {},
@@ -9,6 +9,9 @@ const initialState = {
 
 export default createReducer(initialState, {
   [INIT_HOME]: common, 
+  [GAMES_UPDATED]: common,
+  [INIT_HOME_COMPLETED]: common
+
 });
 
 function common(state, action) {

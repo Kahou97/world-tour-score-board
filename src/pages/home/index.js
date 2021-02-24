@@ -5,6 +5,7 @@ import GameList from "../../components/gameList";
 import { initHome } from "../../actions/home";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
+import * as selectors from '../../selectors/home'
 
 export function Home({ onInit, currentGames, totalGames }) {
   return (
@@ -33,13 +34,22 @@ export function Home({ onInit, currentGames, totalGames }) {
   );
 }
 
-Home.propTypes = {};
+Home.propTypes = {
+  currentGames: PropTypes.array.isRequired,
+  totalGames: PropTypes.array.isRequired
+};
 
-Home.defaultProps = {};
+Home.defaultProps = {
+  currentGames: [],
+  totalGames: []
+};
 
 const mapDispatchToProps = (dispatch) =>
   bindActionCreators({ onInit: initHome }, dispatch);
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  currentGames: selectors.currentGamesSelector(state),
+  totalGames: selectors.totalGamesSelector(state)
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
