@@ -35,8 +35,8 @@ export function getInitialMatches() {
 
 export function getUpdatedValues(currentGamesScores) {
   return currentGamesScores.map((scores) => {
-    const rnd1 = Math.random() * 3;
-    const rnd2 = Math.random() * 3;
-    return { home: scores.home + rnd1, away: scores.away + rnd2 };
+    const rnd1 = Math.floor(Math.random() * 3) + 1  ;
+    const rnd2 = Math.floor(Math.random() * 3) + 1  ;
+    return { home: scores.homeScore + rnd1, away: scores.awayScore + rnd2 };
   });
 }

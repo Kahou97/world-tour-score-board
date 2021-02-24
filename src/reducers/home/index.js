@@ -1,5 +1,5 @@
 import { createReducer } from '../utilsReducer';
-import {INIT_HOME,GAMES_UPDATED, INIT_HOME_COMPLETED} from '../../actions/home';
+import {INIT_HOME, UPDATED_GAMES, INIT_HOME_COMPLETED, ADD_GAME, ENDED_GAME} from '../../actions/home';
 
 const initialState = {
   data: {},
@@ -9,8 +9,10 @@ const initialState = {
 
 export default createReducer(initialState, {
   [INIT_HOME]: common, 
-  [GAMES_UPDATED]: common,
-  [INIT_HOME_COMPLETED]: common
+  [UPDATED_GAMES]: common,
+  [INIT_HOME_COMPLETED]: common,
+  [ADD_GAME]: common,
+  [ENDED_GAME]: common
 
 });
 

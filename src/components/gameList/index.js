@@ -4,9 +4,8 @@ import PropTypes from "prop-types";
 export default function GameList({ game }) {
   return (
     <div>
-      <h2>Total Played Games</h2>
       <div>
-        {x.homeTeam} {x.homeScore} - {x.awayTeam} {x.awayScore}
+        {game.homeTeam} {game.homeScore} - {game.awayTeam} {game.awayScore}
       </div>
     </div>
   );
