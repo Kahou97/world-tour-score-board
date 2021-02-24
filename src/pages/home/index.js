@@ -6,6 +6,7 @@ import { addGame, finishGame, initHome, updateGames } from "../../actions/home";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import * as selectors from "../../selectors/home";
+import styles from './index.module.scss';
 
 export function Home({
   onInit,
@@ -28,14 +29,14 @@ export function Home({
         <button onClick={updateGames}>Update Current Games</button>
         {isNewGameAdded && (
           <div>
-            <div>
-              Home Team:{" "}
+            <div className={styles.space}>
+              Home Team:
               <input
                 type="text"
                 onChange={(e) => setHomeTeam(e.target.value)}
               />
               {"  "}
-              Away Team:{" "}
+              Away Team:
               <input
                 type="text"
                 onChange={(e) => setAwayTeam(e.target.value)}
@@ -61,7 +62,7 @@ export function Home({
           </div>
         )}
       </div>
-
+      <h2>Current Playing Games</h2>
       {currentGames.map((x, i, array) => (
         <PlayingGame
           key={i}
@@ -91,8 +92,23 @@ export function Home({
 }
 
 Home.propTypes = {
-  currentGames: PropTypes.array.isRequired,
-  totalGames: PropTypes.array.isRequired,
+  currentGames: PropTypes.arrayOf({
+    homeTeam: PropTypes.string.isRequired,
+    awayTeam: PropTypes.string.isRequired,
+    homeScore: PropTypes.number.isRequired,
+    awayScore: PropTypes.number.isRequired
+  }).isRequired,
+  totalGames: PropTypes.arrayOf({
+    homeTeam: PropTypes.string.isRequired,
+    awayTeam: PropTypes.string.isRequired,
+    homeScore: PropTypes.number.isRequired,
+    awayScore: PropTypes.number.isRequired
+  }).isRequired,
+  onInit: PropTypes.func.isRequired,
+  addGame: PropTypes.func.isRequired,
+  updateGames: PropTypes.func.isRequired,
+  endGame: PropTypes.func.isRequired,
+
 };
 
 Home.defaultProps = {

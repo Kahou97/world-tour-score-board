@@ -1,6 +1,7 @@
-import { spawn, takeEvery, call, put, select } from 'redux-saga/effects';
-import { INIT_HOME, UPDATE_GAMES, INIT_HOME_COMPLETED, GAMES_UPDATED, UPDATED_GAMES } from '../../actions/home';
+import { spawn, takeEvery, put, select } from 'redux-saga/effects';
+import { INIT_HOME, UPDATE_GAMES, INIT_HOME_COMPLETED, UPDATED_GAMES } from '../../actions/home';
 import {getInitialMatches, getUpdatedValues} from '../../api'; 
+
 
 export default function* homeSaga() {
   yield spawn(watchInitHome);

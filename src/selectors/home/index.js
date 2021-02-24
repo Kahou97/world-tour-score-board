@@ -1,11 +1,12 @@
 import { createSelector } from "reselect";
+import {path} from 'ramda';
 
 const currentGames = (state) => {
-    return state.home.data.currentGames;
+    return path(['home', 'data', 'currentGames'], state) || [];
 };
 
 const totalGames = (state) => {
-    return state.home.data.totalGames;
+    return path(['home', 'data', 'totalGames'], state) || [];
 };
 
 export const currentGamesSelector = createSelector([currentGames], games => games);
